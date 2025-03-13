@@ -17,3 +17,10 @@ print(f"Age: ", age)
 print(f"Height:", height)
 print(f"Name:", name)
 print(f"Is Student:", is_student)
+
+from greetings import greet
+
+greet(name)
+print("\n")
+
+greet("Chakin Chukumweka")
