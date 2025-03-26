@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dance Crew Results</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Dance Crew Results</h1>
+
+            <div class="table-container">
+                <table class="crew-table">
+                    <thead>
+                        <tr>
+                            <th>Dance Crew</th>
+                            <th>Number of Members</th>
+                            <th>Performing</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for crew in crews %}
+                        <tr>
+                            <td>{{ crew['danceCrew'] }}</td>
+                            <td>{{ crew['number'] }}</td>
+                            <td>{{ crew['performing'] }}</td>
+                            <td>{{ crew['position'] }}</td>
+                            <td>
+                                {% if crew['performing'] == 'Yes' %}
+                                <a
+                                    href="{{ url_for('remove_crew', index=loop.index0) }}"
+                                    class="remove-btn"
+                                    >Remove</a
+                                >
+                                {% else %}
+                                <span>Not Performing</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
